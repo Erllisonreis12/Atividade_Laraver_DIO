@@ -16,6 +16,5 @@ class Usuario extends Controller
         else{
             return response("Erro", 409);
         }
-
     }
 }

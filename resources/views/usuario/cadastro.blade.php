@@ -1,48 +1,72 @@
 @extends('layout.base')
 
-@section('titulo', 'Cadastro de usuário')
+@section('title', 'Cadastro de usuário')
 
 @section('conteudo')
 
-    <form action="{{ route('salvar') }}" method="post">
-         {{csrf_field()}}
+    <div class="row justify-content-center">
+        <form class='card text-center m-5 p-5 formulario' action="{{ route('salvar') }}" method="post">
+            {{csrf_field()}}
 
-        <div class="field">
-            <label for="nome">Nome:</label>
-            <input type="text" name="nome" id="nome" />
+            <div class="m-5">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" class="form-control" id="email" placeholder="Seu email">
 
-            @if ($errors->has('nome'))
-                @foreach ($errors->get('nome') as $erro)
-                    <strong class="error">{{$erro}}</strong>
-                @endforeach
-            @endif
-        </div>
+                @if ($errors->has('email'))
+                    @foreach ($errors->get('email') as $erro)
+                        <strong class="error">{{$erro}}</strong>
+                    @endforeach
+                @endif
+            </div>
+            <div class="m-5">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="senha" placeholder="Sua Senha">
 
-        <div class="field">
-            <label for="email">E-mail:</label>
-            <input type="email" name="email" id="email" />
+                @if ($errors->has('senha'))
+                    @foreach ($errors->get('senha') as $erro)
+                        <strong class="error">{{$erro}}</strong>
+                    @endforeach
+                @endif
+            </div>
+            <button type="buttom" class="btn btn-primary"></button>
 
-            @if ($errors->has('email'))
-                @foreach ($errors->get('email') as $erro)
-                    <strong class="error">{{$erro}}</strong>
-                @endforeach
-            @endif
-        </div>
+            {{-- <div class="field">
+                <label for="nome">Nome:</label>
+                <input type="text" name="nome" id="nome" />
 
-        <div class="field">
-            <label for="senha">Senha:</label>
-            <input type="password" name="senha" id="senha" />
+                @if ($errors->has('nome'))
+                    @foreach ($errors->get('nome') as $erro)
+                        <strong class="error">{{$erro}}</strong>
+                    @endforeach
+                @endif
+            </div>
 
-            @if ($errors->has('senha'))
-                @foreach ($errors->get('senha') as $erro)
-                    <strong class="error">{{$erro}}</strong>
-                @endforeach
-            @endif
-        </div>
+            <div class="field">
+                <label for="email">E-mail:</label>
+                <input type="email" name="email" id="email" />
 
-        <div class="btn">
-            <button type="submit">Salvar</button>
-        </div>
+                @if ($errors->has('email'))
+                    @foreach ($errors->get('email') as $erro)
+                        <strong class="error">{{$erro}}</strong>
+                    @endforeach
+                @endif
+            </div>
 
-    </form>
+            <div class="field">
+                <label for="senha">Senha:</label>
+                <input type="password" name="senha" id="senha" />
+
+                @if ($errors->has('senha'))
+                    @foreach ($errors->get('senha') as $erro)
+                        <strong class="error">{{$erro}}</strong>
+                    @endforeach
+                @endif
+            </div>
+
+            <div class="btn">
+                <button type="submit">Salvar</button>
+            </div> --}}
+
+        </form>
+    </div>
 @endsection

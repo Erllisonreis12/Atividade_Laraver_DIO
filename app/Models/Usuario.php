@@ -12,7 +12,7 @@ use Carbon\Carbon;
 class Usuario extends Model
 {
 
-    protected $connection = 'mysql';
+    // protected $connection = 'mysql';
     protected $table = 'usuario';
 
     public static function listar(int $limite) {

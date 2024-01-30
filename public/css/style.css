@@ -1,7 +1,7 @@
 .logo{
     width: 100%;
     padding: 10px;
-    background-color: black;
+    background-color: #00a5ad;;
 }
 
 .field{
@@ -11,4 +11,31 @@
 html, body{
     padding: 0;
     margin: 0;
+}
+
+#redes-sociais {
+    background-color: #00696f;
+    padding-top: 10px;
+    height: 45px;
+}
+
+body {
+    font-family: "Gotham-Light", Helvetica, Arial, sans-serif;
+    font-size: 13px;
+    line-height: 1.42857;
+    color: #333;
+    background-color: #fff;
+}
+#widget-acessibilidade {
+    padding-top: 5px;
+    font-size: 13px;
+}
+
+.img-responsive{
+    padding-left: 200px;
+}
+
+.formulario{
+    width: 40rem;
+    position: center;
 }
