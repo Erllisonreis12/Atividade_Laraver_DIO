@@ -17,4 +17,13 @@ class Usuario extends Controller
             return response("Erro", 409);
         }
     }
+
+    public function entrar(Request $req){
+        if(User::entrar($req)){
+            return response("Ok", 201);
+        }
+        else{
+            return response("Erro", 409);
+        }
+    }
 }

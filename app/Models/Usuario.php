@@ -32,4 +32,10 @@ class Usuario extends Model
                     new Carbon()
                 ]);
     }
+
+    public static function entrar(Request $req) {
+        $sql = self::select(["nome"])->where("email", $req->input('email'));
+
+        return $sql->get();
+    }
 }

@@ -38,4 +38,6 @@ body {
 .formulario{
     width: 40rem;
     position: center;
+    margin-top: 100px;
+    padding: 50px;
 }
