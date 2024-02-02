@@ -12,7 +12,7 @@ use Carbon\Carbon;
 class Usuario extends Model
 {
 
-    // protected $connection = 'mysql';
+    protected $connection = 'mysql';
     protected $table = 'usuario';
 
     public static function listar(int $limite) {
@@ -34,8 +34,8 @@ class Usuario extends Model
     }
 
     public static function entrar(Request $req) {
-        $sql = self::select(["nome"])->where("email", $req->input('email'));
-
+        $sql = self::select(["nome", "senha"])->where("email", $req->input('email'));
         return $sql->get();
+
     }
 }

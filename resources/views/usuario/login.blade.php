@@ -34,4 +34,15 @@
             <button class="btn btn-primary rounded-pill px-3 mt-4" type="button submit">Entrar</button>
         </form>
     </div>
+    @if ($teste==1)
+        <div class="row mt-3 text-center">
+            <h5>Sua email não existe ou está errado</h5>
+        </div>
+    @elseif($teste==2)
+        <div class="row mt-3 text-center">
+            <h5>Sua senha não está correta</h5>
+        </div>
+    @endif
+
+
 @endsection

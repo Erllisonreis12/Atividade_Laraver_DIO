@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Usuario as ModelsUsuario;
+use Error;
 use Illuminate\Http\Request;
-use Hash;
+use Illuminate\Support\Facades\Hash;
 
 class Usuario extends Controller
 {
@@ -14,14 +15,18 @@ class Usuario extends Controller
     }
 
     public function login(){
-        return view('usuario.login');
+        return view('usuario.login',["teste" => 0]);
+    }
+
+    public function login1(int $num) {
+        return view('usuario.login',["teste" => $num]);
     }
 
     public function salvar(Request $req)
     {
         $req->validate([
             "nome" => "required",
-            "email" => "required|email|unique",
+            "email" => "required|unique:usuario|email",
             "senha" => "required|min:5"
         ]);
 
@@ -42,14 +47,28 @@ class Usuario extends Controller
             "senha" => "required|min:5"
         ]);
 
-        $nome = ModelsUsuario::Entrar($req);
+        $dados = ModelsUsuario::Entrar($req);
 
-        if($nome){
-            return view('usuario.sucesso',[
-            "fulano" => $nome[0]['nome']
-            ]);
+        if(empty($dados[0])){
+            return self::login1(1);
         }else{
-            self::login();
+            if(self::validarSenha($dados[0], $req->input('senha'))){
+                return view('usuario.sucesso',[
+                "fulano" => $dados[0]['nome']
+                ]);
+            }else{
+                return self::login1(2);
+            }
+        }
+
+
+    }
+
+    public function validarSenha(ModelsUsuario $teste, string $senha) {
+        if(!empty($teste)){
+            return Hash::check($senha, $teste['senha']);
+        }else{
+            return false;
         }
     }
 
