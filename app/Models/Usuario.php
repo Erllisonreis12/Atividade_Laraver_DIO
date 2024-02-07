@@ -17,19 +17,18 @@ class Usuario extends Model
 
     public static function listar(int $limite) {
         $sql = self::select([
-            "id", "nome", "email","senha", "data_cadastro"
+            "id", "nome", "email","senha",
         ])->limit($limite);
 
         return $sql->get();
     }
 
     public static function cadastrar(Request $req){
-        return DB::insert('insert into usuario (nome, email, senha, data_cadastro)
-                    values (?, ?, ?, ?)', [
+        return DB::insert('insert into usuario (nome, email, senha)
+                    values (?, ?, ?)', [
                     $req->input('nome'),
                     $req->input('email'),
                     Hash::make($req->input('senha')),
-                    new Carbon()
                 ]);
     }
 

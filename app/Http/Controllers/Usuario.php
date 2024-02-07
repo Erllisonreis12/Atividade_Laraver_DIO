@@ -14,11 +14,7 @@ class Usuario extends Controller
         return view('usuario.cadastro');
     }
 
-    public function login(){
-        return view('usuario.login',["teste" => 0]);
-    }
-
-    public function login1(int $num) {
+    public function login($num = 0){
         return view('usuario.login',["teste" => $num]);
     }
 
@@ -50,14 +46,14 @@ class Usuario extends Controller
         $dados = ModelsUsuario::Entrar($req);
 
         if(empty($dados[0])){
-            return self::login1(1);
+            return redirect("/1");
         }else{
             if(self::validarSenha($dados[0], $req->input('senha'))){
                 return view('usuario.sucesso',[
                 "fulano" => $dados[0]['nome']
                 ]);
             }else{
-                return self::login1(2);
+                return redirect("/2");
             }
         }
 

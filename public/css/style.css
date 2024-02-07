@@ -2,6 +2,7 @@
     width: 100%;
     padding: 10px;
     background-color: #00a5ad;;
+    color: white;
 }
 
 .field{
@@ -40,4 +41,9 @@ body {
     position: center;
     margin-top: 100px;
     padding: 50px;
+}
+
+
+.test{
+    padding-left: 300px;
 }

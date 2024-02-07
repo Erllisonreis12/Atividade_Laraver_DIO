@@ -19,12 +19,14 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', [Usuario::class, 'login'])->name('login');
+Route::get('/{id?}', [Usuario::class, 'login'])->name('login');
 Route::post('/entrar', [Usuario::class, 'entrar'])->name('entrar');
 
-Route::get('/cadastrar', [Usuario::class, 'cadastrar'])->name('cadastrar');
+Route::get('/user/cadastrar', [Usuario::class, 'cadastrar'])->name('cadastrar');
 Route::post('/salvar', [Usuario::class, 'salvar'])->name('salvar');
 
 
-
+Route::get('/teste/teste', function (){
+    return view('layout.basehome');
+});
 
