@@ -12,6 +12,10 @@ use Carbon\Carbon;
 class Usuario extends Model
 {
 
+    protected $fillable = [
+        'nome','email','senha'
+    ];
+
     protected $connection = 'mysql';
     protected $table = 'usuario';
 
@@ -24,17 +28,15 @@ class Usuario extends Model
     }
 
     public static function cadastrar(Request $req){
-        return DB::insert('insert into usuario (nome, email, senha)
-                    values (?, ?, ?)', [
-                    $req->input('nome'),
-                    $req->input('email'),
-                    Hash::make($req->input('senha')),
-                ]);
+        return self::create([
+            'nome' => $req->input('nome'),
+            'email' => $req->input('email'),
+            'senha' => Hash::make($req->input('senha')),
+        ]);
     }
 
     public static function entrar(Request $req) {
         $sql = self::select(["nome", "senha"])->where("email", $req->input('email'));
         return $sql->get();
-
     }
 }

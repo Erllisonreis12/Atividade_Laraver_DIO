@@ -84,8 +84,8 @@
     </div>
 
 
-    <footer class="justify-content-center">
-        <div class="footer-bg fixed-bottom" style="background: url('https://semsa.manaus.am.gov.br/wp-content/themes/semsa/dist/imagens/2021/bg-rodape.png') repeat-x bottom left; ">
+    <footer class="fixed-bottom justify-content-center">
+        <div class="footer-bg" style="background: url('https://semsa.manaus.am.gov.br/wp-content/themes/semsa/dist/imagens/2021/bg-rodape.png') repeat-x bottom left; ">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-10 col-xs-offset-1 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3" style="padding:5px">

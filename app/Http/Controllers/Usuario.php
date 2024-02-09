@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cidadao;
 use App\Models\Usuario as ModelsUsuario;
-use Error;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -14,8 +14,9 @@ class Usuario extends Controller
         return view('usuario.cadastro');
     }
 
-    public function login($num = 0){
-        return view('usuario.login',["teste" => $num]);
+    public function login()
+    {
+        return view('usuario.login');
     }
 
     public function salvar(Request $req)
@@ -37,7 +38,8 @@ class Usuario extends Controller
 
     }
 
-    public function entrar(Request $req){
+    public function entrar(Request $req)
+    {
         $req->validate([
             "email" => "required|email",
             "senha" => "required|min:5"
@@ -46,26 +48,22 @@ class Usuario extends Controller
         $dados = ModelsUsuario::Entrar($req);
 
         if(empty($dados[0])){
-            return redirect("/1");
+            return redirect()->route('login')->with('num', 1);
         }else{
             if(self::validarSenha($dados[0], $req->input('senha'))){
-                return view('usuario.sucesso',[
-                "fulano" => $dados[0]['nome']
-                ]);
+                return redirect()->route('home_cidadao')->with('fulano', $dados[0]['nome']);
             }else{
-                return redirect("/2");
+                return redirect()->route('login')->with('num', 2);
             }
         }
-
-
     }
 
-    public function validarSenha(ModelsUsuario $teste, string $senha) {
+    public function validarSenha(ModelsUsuario $teste, string $senha)
+    {
         if(!empty($teste)){
             return Hash::check($senha, $teste['senha']);
-        }else{
-            return false;
         }
     }
+
 
 }
